@@ -5,7 +5,7 @@ from rossmann.Rossmann import Rossmann
 from flask import Flask, request, Response, jsonify
 
 # load model
-model = pickle.load(open('/model_rossmann.pkl', 'rb'))
+model = pickle.load(open('model/model_rossmann.pkl', 'rb'))
 
 # instantiate pipeline
 pipeline = Rossmann()
