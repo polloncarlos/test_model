@@ -108,8 +108,12 @@ class Rossmann(object):
         df5['month_cos'] = np.cos(df5['month'] * 2. * np.pi/12)
         df5['day_sin'] = np.sin(df5['day'] * 2. * np.pi/30)
         df5['day_cos'] = np.cos(df5['day'] * 2. * np.pi/30)
-        df5['week_of_year_sin'] = np.sin(df5['week_of_year'] * 2. * np.pi/52)
-        df5['week_of_year_cos'] = np.cos(df5['week_of_year'] * 2. * np.pi/52)
+        df5['week_of_year_sin'] = df5['week_of_year'].apply(lambda x: np.sin(x * (2 * np.pi / 52))).astype('float64')
+        df5['week_of_year_cos'] = df5['week_of_year'].apply(lambda x: np.cos(x * (2 * np.pi / 52))).astype('float64')
+        
+        # Garantir que tudo seja numérico
+        df5 = df5.apply(pd.to_numeric, errors='coerce')
+
 
         cols_selected = [
             'store','promo','school_holiday','store_type','assortment',
