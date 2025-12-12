@@ -1,1 +1,1 @@
-web: gunicorn handler.app:app
+web: gunicorn handler:app --bind 0.0.0.0:8080
