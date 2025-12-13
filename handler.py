@@ -22,8 +22,6 @@ def rossmann_predict():
         else: # multiple example
             test_raw = pd.DataFrame( test_json, columns=test_json[0].keys() )
 
-        # Instantiate Rossmann class
-        pipeline = Rossmann()
         # data cleaning
         df1 = pipeline.data_cleaning( test_raw )
         # feature engineering
